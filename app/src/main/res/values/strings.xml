@@ -79,7 +79,7 @@
     <string name="dialog_delete_title">Delete items permanently?</string>
     <string name="deleting">Deleting</string>
     <string name="question_set_path_as_home">Do you want to set current path as home for this tab?</string>
-    <string name="directorysort">Directory Sort Mode</string>
+    <string name="directorysort">Directory/File Sort Mode</string>
     <string name="sort_by">Sort By</string>
     <string name="sort_only_this">Only this folder</string>
     <string name="theme">Theme</string>
