@@ -1160,9 +1160,10 @@ public class MainFragment extends Fragment
                 listView,
                 listElements == null ? Collections.emptyList() : listElements,
                 requireContext(),
-                grid);
+                grid,
+                mainFragmentViewModel.getDsort());
       } else {
-        adapter.setItems(listView, new ArrayList<>(mainFragmentViewModel.getListElements()));
+        adapter.setItems(listView, new ArrayList<>(mainFragmentViewModel.getListElements()), mainFragmentViewModel.getDsort());
       }
 
       mainFragmentViewModel.setStopAnims(true);

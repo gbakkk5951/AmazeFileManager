@@ -134,7 +134,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
       textColor,
       archiveColor,
       genericColor,
-      apkColor;
+      apkColor,
+      dsort;
   private int offset = 0;
   private boolean enableMarquee;
   private int dragAndDropPreference;
@@ -148,9 +149,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
       RecyclerView recyclerView,
       @NonNull List<LayoutElementParcelable> itemsRaw,
       @NonNull Context context,
-      boolean isGrid) {
+      boolean isGrid,
+      int dsort) {
     setHasStableIds(true);
-
+    this.dsort = dsort;
     this.preferenceActivity = preferenceActivity;
     this.mainFrag = m;
     this.utilsProvider = utilsProvider;
@@ -391,7 +393,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     notifyItemInserted(getItemCount());
   }
 
-  public void setItems(RecyclerView recyclerView, @NonNull List<LayoutElementParcelable> elements) {
+  public void setItems(RecyclerView recyclerView, @NonNull List<LayoutElementParcelable> elements, int dsort) {
+    if (dsort != -1) {
+        this.dsort = dsort;
+    }
     setItems(recyclerView, elements, true);
   }
 
@@ -426,7 +431,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
       itemsDigested.get(i).setAnimate(false);
     }
 
-    if (getBoolean(PREFERENCE_SHOW_HEADERS)) {
+    if (getBoolean(PREFERENCE_SHOW_HEADERS) && (dsort != 2)) {
       createHeaders(invalidate, uris);
     }
 
